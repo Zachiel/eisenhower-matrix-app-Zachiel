@@ -3,7 +3,7 @@ namespace EisenhowerCore
 	public class TodoMatrix
 	{
 		private readonly List<TodoQuarter> _quarters;
-		private readonly List<TodoItem>    _allItems;
+		public readonly List<TodoItem>    _allItems;
 
 		public TodoMatrix()
 		{

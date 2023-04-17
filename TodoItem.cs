@@ -18,8 +18,8 @@ namespace EisenhowerCore
 			_isArchived  = false;
 		}
 
-		private int  _id     { get; set; }
-		private bool _isDone { get; set; }
+		public int  _id     { get; set; }
+		public bool _isDone { get; set; }
 
 
 		public override string ToString()
