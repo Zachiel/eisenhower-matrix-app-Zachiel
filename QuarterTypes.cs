@@ -8,5 +8,12 @@ namespace EisenhowerCore
 {
     internal class QuarterTypes
     {
+        public enum quarters 
+        {
+            importantUrgent,
+            importantNotUrgent,
+            notImportantUrgent,
+            notImportantNotUrgent
+        }
     }
 }
