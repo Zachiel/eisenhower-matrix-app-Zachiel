@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace EisenhowerCore
 {
-    internal class QuarterTypes
+    public class QuarterTypes
     {
         public enum quarters 
         {
             importantUrgent,
             importantNotUrgent,
             notImportantUrgent,
-            notImportantNotUrgent
+            notImportantNotUrgent,
+            archivedCards
         }
     }
 }
