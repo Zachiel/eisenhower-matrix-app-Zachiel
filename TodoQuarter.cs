@@ -10,12 +10,14 @@ namespace EisenhowerCore
 		{
 			this._type   = type;
 			this._matrix = matrix;
-		}
+			UpdateAssignedItems();
+
+        }
 
 		public List<TodoItem> GetAssignedItems()
 		{
 			List<TodoItem> assigned = new();
-			foreach (TodoItem item in _matrix.allItems)
+			foreach (TodoItem item in _matrix._allItems)
 				if (item.AssignQuarter() == _type)
 					assigned.Add(item);
 

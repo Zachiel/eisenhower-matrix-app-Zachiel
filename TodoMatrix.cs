@@ -28,7 +28,7 @@ namespace EisenhowerCore
 		public void RemoveItem(int id)
 		{
 			foreach (TodoItem item in _allItems)
-				if (item.id == id)
+				if (item._id == id)
 					_allItems.Remove(item);
 
 			updateAllQuarters();
@@ -37,7 +37,7 @@ namespace EisenhowerCore
 		public void ArchiveCards()
 		{
 			foreach (TodoItem item in _allItems)
-				if (item.isDone)
+				if (item._isDone)
 					item.MarkAsArchived();
 
 			updateAllQuarters();

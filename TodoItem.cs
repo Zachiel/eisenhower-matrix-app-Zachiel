@@ -45,7 +45,7 @@ namespace EisenhowerCore
 
 		public QuarterTypes.quarters AssignQuarter()
 		{
-			if (_isArchived)
+			if (!_isArchived)
 			{
 				if (_isImportant && IsUrgent()) return QuarterTypes.quarters.importantUrgent;
 
