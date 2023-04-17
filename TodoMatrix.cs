@@ -2,53 +2,45 @@ namespace EisenhowerCore
 {
 	public class TodoMatrix
 	{
-		List<TodoQuarter> quarters;
-		public List<TodoItem> allItems;
-		
+		private readonly List<TodoQuarter> _quarters;
+		private readonly List<TodoItem>    _allItems;
+
 		public TodoMatrix()
 		{
-			this.allItems = new List<TodoItem>();
-			this.quarters = new List<TodoQuarter>();
-            foreach (QuarterTypes.quarters quarter in Enum.GetValues(typeof(QuarterTypes.quarters)))
-            {
-                quarters.Add(new TodoQuarter(quarter, this));
-            }
-        }
-        public void updateAllQuarters()
+			_allItems = new List<TodoItem>();
+			_quarters = new List<TodoQuarter>();
+			foreach (QuarterTypes.quarters quarter in Enum.GetValues(typeof(QuarterTypes.quarters)))
+				_quarters.Add(new TodoQuarter(quarter, this));
+		}
+
+		public void updateAllQuarters()
 		{
-            foreach (TodoQuarter quarter in quarters)
-            {
-                quarter.updateAssignedItems();
-            }
-        }
-		public void createItem(string name, DateTime date, bool isImportant)
+			foreach (TodoQuarter quarter in _quarters) quarter.UpdateAssignedItems();
+		}
+
+		public void CreateItem(string name, DateTime date, bool isImportant)
 		{
-			TodoItem item = new TodoItem(name, date, isImportant);
-			this.allItems.Add(item);
+			TodoItem item = new(name, date, isImportant);
+			_allItems.Add(item);
 			updateAllQuarters();
 		}
-		public void removeItem(int id)
-		{
-            foreach (var item in allItems)
-            {
-                if (item.id == id)
-				{
-					allItems.Remove(item);
-				}
-            }
-			updateAllQuarters();
-        }
-		public void archiveCards()
-		{
-            foreach (var item in allItems)
-            {
-                if (item.isDone)
-				{
-					item.markAsArchived();
-				}
-            }
-			updateAllQuarters();
-        }
 
-    }
+		public void RemoveItem(int id)
+		{
+			foreach (TodoItem item in _allItems)
+				if (item.id == id)
+					_allItems.Remove(item);
+
+			updateAllQuarters();
+		}
+
+		public void ArchiveCards()
+		{
+			foreach (TodoItem item in _allItems)
+				if (item.isDone)
+					item.MarkAsArchived();
+
+			updateAllQuarters();
+		}
+	}
 }

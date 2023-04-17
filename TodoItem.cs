@@ -2,93 +2,74 @@ namespace EisenhowerCore
 {
 	public class TodoItem
 	{
-		static int counter = 0;
-		public int id { get; }
-		string name;
-		DateTime date;
-		bool isImportant;
-		public bool isDone { get; }
-		bool isArchived;
+		private static   int      _counter;
+		private readonly DateTime _date;
+		private readonly string   _name;
+		private          bool     _isArchived;
+		private          bool     _isImportant;
+
 		public TodoItem(string name, DateTime date, bool isImportant)
 		{
-			id = counter++;
-			this.name = name;
-			this.date = date;
-			this.isImportant = isImportant;
-			isDone = false; 
-			isArchived = false;
+			_id          = _counter++;
+			_name        = name;
+			_date        = date;
+			_isImportant = isImportant;
+			_isDone      = false;
+			_isArchived  = false;
 		}
-        public override string ToString()
-        {
-			string stringToReturn = "[";
-			if (isDone)
-			{
-				stringToReturn += "X";
-			}
-			else
-			{
-				stringToReturn += " ";
-			}
-			stringToReturn += $"] {date.Day}-{date.Month} {name}";
-			return stringToReturn;
-        }
 
-		public bool isUrgent()
+		private int  _id     { get; set; }
+		private bool _isDone { get; set; }
+
+
+		public override string ToString()
 		{
-			DateTime now = DateTime.Now;
-			double difference = (now - date).TotalDays;
+			string stringToReturn = "[";
+			if (_isDone)
+				stringToReturn += "X";
+			else
+				stringToReturn += " ";
+
+			stringToReturn += $"] {_date.Day}-{_date.Month} {_name}";
+
+			return stringToReturn;
+		}
+
+		public bool IsUrgent()
+		{
+			DateTime now        = DateTime.Now;
+			double   difference = (now - _date).TotalDays;
+
 			return difference <= 3;
 		}
-		public QuarterTypes.quarters assignQuarter()
+
+		public QuarterTypes.quarters AssignQuarter()
 		{
-			if (isArchived)
+			if (_isArchived)
 			{
-				if (isImportant && isUrgent())
+				if (_isImportant && IsUrgent()) return QuarterTypes.quarters.importantUrgent;
+
+				if (_isImportant || IsUrgent())
 				{
-					return QuarterTypes.quarters.importantUrgent;
+					if (_isImportant) return QuarterTypes.quarters.importantNotUrgent;
+
+					return QuarterTypes.quarters.notImportantUrgent;
 				}
-				else if (isImportant || isUrgent())
-				{
-					if (isImportant)
-					{
-						return QuarterTypes.quarters.importantNotUrgent;
-					}
-					else
-					{
-						return QuarterTypes.quarters.notImportantUrgent;
-					}
-				}
-				else
-				{
-					return QuarterTypes.quarters.notImportantNotUrgent;
-				}
+
+				return QuarterTypes.quarters.notImportantNotUrgent;
 			}
-			else
-			{
-				return QuarterTypes.quarters.archivedCards;
-			}
+
+			return QuarterTypes.quarters.archivedCards;
 		}
 
-		public void markAsDone()
-		{
-			isDone = true;
-		}
-		public void unmarkAsDone()
-		{
-			isDone = false;
-		}
-		public void markAsArchived()
-		{
-			isArchived = true;
-		}
-		public void markAsImportant()
-		{
-			isImportant = true;
-		}
-		public void unmarkAsImportant()
-		{
-			isImportant = false;
-		}
+		public void MarkAsDone() => _isDone = true;
 
-    }
+		public void UnmarkAsDone() => _isDone = false;
+
+		public void MarkAsArchived() => _isArchived = true;
+
+		public void MarkAsImportant() => _isImportant = true;
+
+		public void UnmarkAsImportant() => _isImportant = false;
+	}
 }
