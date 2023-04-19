@@ -8,6 +8,7 @@ namespace EisenhowerCore
 {
     public class Input
     {
+        protected int maxValue;
         protected static string InvalidInputError = "This input is not valid. Try again";
         protected string message;
         protected string value;
@@ -24,8 +25,9 @@ namespace EisenhowerCore
                }
             while (!IsInputValid());
         }
-        public Input(string message)
+        public Input(string message, int maxValue = 0)
         {
+            this.maxValue = maxValue;
             this.message = message;
             ForceValidInput();
         }
