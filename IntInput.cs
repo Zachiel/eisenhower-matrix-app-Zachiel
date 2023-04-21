@@ -17,7 +17,7 @@ namespace EisenhowerCore
         }
 
         protected override bool IsInputValid() => int.TryParse(value, out int number);
-        protected bool IsInCorrectRange() => int.Parse(value) => maxValue && int.Parse(value > 0;
+        protected bool IsInCorrectRange() => int.Parse(value) => maxValue && int.Parse(value > 0);
         protected void ForceValidRange() 
         {
             while (!IsInCorrectRange())
