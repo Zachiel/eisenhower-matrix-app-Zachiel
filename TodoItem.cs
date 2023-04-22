@@ -40,7 +40,7 @@ namespace EisenhowerCore
             DateTime now = DateTime.Now;
             double difference = (now - _date).TotalDays;
 
-            return difference <= 3;
+            return difference >= -3;
         }
 
         public QuarterTypes.quarters AssignQuarter()
