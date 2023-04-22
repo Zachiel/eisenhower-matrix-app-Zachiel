@@ -37,15 +37,15 @@ namespace EisenhowerCore
 			{
 				if (i < urgentCounter && i < notUrgentCounter)
 				{
-					lines.Add($" | {urgentItems[i].ToString()}  | {notUrgentItems[i].ToString()} | ");
+					lines.Add($" | {urgentItems[i]}  | {notUrgentItems[i]} | ");
 				}
 				else if (i < notUrgentCounter)
 				{
-                    lines.Add($" |                                    | {notUrgentItems[i].ToString()} | ");
+                    lines.Add($" |                                    | {notUrgentItems[i]} | ");
                 }
                 else if (i < urgentCounter)
                 {
-                    lines.Add($" | {urgentItems[i].ToString()}  |                                     | ");
+                    lines.Add($" | {urgentItems[i]}  |                                     | ");
                 }
 				else
 				{
