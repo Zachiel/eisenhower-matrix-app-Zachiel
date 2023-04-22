@@ -28,28 +28,28 @@ namespace EisenhowerCore
 
 			int urgentCounter = urgentItems.Count();
             int notUrgentCounter = notUrgentItems.Count();
+			int max;
+			if (urgentCounter < 13 && notUrgentCounter < 13) max = 13;
+			else if (urgentCounter > notUrgentCounter) max = urgentCounter - 1;
+			else max = notUrgentCounter - 1;
 
-            for (int i = 13; i>0; i--)
+            for (int i = 0; i<=max; i++)
 			{
-				if (urgentItems[13 - i] == null && notUrgentItems[13 - i] != null)
+				if (i < urgentCounter && i < notUrgentCounter)
 				{
-					lines.Add($" | {urgentItems[13 - i]}  | {notUrgentItems[13 - i]} | ");
-					urgentCounter--;
-					notUrgentCounter--;
+					lines.Add($" | {urgentItems[max - i].ToString()}  | {notUrgentItems[max- i].ToString()} | ");
 				}
-				else if (urgentItems[13 - i] == null && notUrgentItems[13 - i] != null)
+				else if (i < notUrgentCounter)
 				{
-                    lines.Add($" |                                        | {notUrgentItems[13 - i]} | ");
-					notUrgentCounter--;
+                    lines.Add($" |                                    | {notUrgentItems[13 - i].ToString()} | ");
                 }
-                else if (urgentItems[13 - i] != null && notUrgentItems[13 - i] == null)
+                else if (i < urgentCounter)
                 {
-                    lines.Add($" | {urgentItems[13 - i]}  |                                         | ");
-					urgentCounter--;
+                    lines.Add($" | {urgentItems[max - i].ToString()}  |                                     | ");
                 }
 				else
 				{
-                    lines.Add($" |                                         |                                         | ");
+                    lines.Add($" |                                    |                                     | ");
                 }
 
             }	

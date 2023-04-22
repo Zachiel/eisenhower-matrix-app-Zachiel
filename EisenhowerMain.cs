@@ -12,12 +12,6 @@
             TodoQuarter quarter4 = new TodoQuarter(QuarterTypes.quarters.notImportantNotUrgent, matrix);
 
             display.DisplayMatrix(quarter1, quarter2, quarter3, quarter4);
-
-
-            BoolInput boolInput = new BoolInput("give me bool");
-
-
-            IntInput input = new IntInput("Get value", 13);
         }
     }
 }
