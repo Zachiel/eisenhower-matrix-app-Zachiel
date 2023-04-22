@@ -58,17 +58,17 @@ namespace EisenhowerCore
 
         }
 
-        public void DisplayMatrix(TodoQuarter importantUrgent, TodoQuarter importantNotUrgent, TodoQuarter notImportantUrgent, TodoQuarter notImportantNotUrgent)
+        public void DisplayMatrix(TodoMatrix Matrix)
 		{
 			Console.WriteLine(Header());
 			Console.WriteLine(BreakLine());
-			List<string> importantLines = Lines(importantUrgent, importantNotUrgent);
+			List<string> importantLines = Lines(Matrix._quarters[0], Matrix._quarters[1]);
 			foreach (string line in importantLines)
 			{
 				Console.WriteLine(line);
 			}
 			Console.WriteLine(BreakLine());
-            List<string> notImportantLines = Lines(notImportantNotUrgent, notImportantNotUrgent);
+            List<string> notImportantLines = Lines(Matrix._quarters[2], Matrix._quarters[3]);
             foreach (string line in notImportantLines)
             {
                 Console.WriteLine(line);

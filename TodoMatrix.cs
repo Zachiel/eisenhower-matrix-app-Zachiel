@@ -2,11 +2,13 @@ namespace EisenhowerCore
 {
     public class TodoMatrix
     {
-        private readonly List<TodoQuarter> _quarters;
+        public readonly List<TodoQuarter> _quarters;
         public readonly List<TodoItem> _allItems;
+        Display display;
 
         public TodoMatrix()
         {
+            display = new Display();
             _allItems = new List<TodoItem>();
             _quarters = new List<TodoQuarter>();
             foreach (QuarterTypes.quarters quarter in Enum.GetValues(typeof(QuarterTypes.quarters)))
@@ -41,6 +43,11 @@ namespace EisenhowerCore
                     item.MarkAsArchived();
 
             updateAllQuarters();
+        }
+
+        public void Display()
+        {
+            display.DisplayMatrix(this);
         }
 
         //Dictionary<string, TodoQuarter> TodoQuarters = new Dictionary<string, TodoQuarter>()
