@@ -74,5 +74,18 @@ namespace EisenhowerCore
             }
             Console.WriteLine(BreakLine());
         }
+
+        public void TakeInput(TodoMatrix matrix)
+        {
+            Input input = new Input("Provide task");
+            DateInput dateInput = new DateInput("Provide deadline for you task");
+            BoolInput boolInput = new BoolInput("Is your task important?");
+
+            string todo = input.GetValue();
+            DateTime deadline = dateInput.GetConvertedValue();
+            bool importance = boolInput.GetConvertedValue();
+
+            matrix.CreateItem(todo, deadline, importance);
+        }
     }
 }
