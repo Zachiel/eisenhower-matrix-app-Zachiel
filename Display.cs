@@ -40,7 +40,7 @@ namespace EisenhowerCore
                 }
                 else if (i < notUrgentCounter)
                 {
-                    lines.Add($" |                                   | {notUrgentItems[i].ToString().PadRight(lineWidth)} | ");
+                    lines.Add($" |                                       | {notUrgentItems[i].ToString().PadRight(lineWidth)} | ");
                 }
                 else if (i < urgentCounter)
                 {
@@ -86,6 +86,36 @@ namespace EisenhowerCore
             bool importance = boolInput.GetConvertedValue();
 
             matrix.CreateItem(todo, deadline, importance);
+        }
+
+        public void Welcome()
+        {
+            Console.WriteLine("Welcome in Eisenhower App");
+        }
+
+
+        public string HoldLogic()
+        {
+            LogicInput input = new LogicInput("Provide 't' if you want to add task, " +
+                "provide 'd' if you want to mark your task as done");
+
+            string inputValue = input.GetValue();
+            return inputValue;
+        }
+
+
+        public string RunProgram()
+        {
+            ProgramLogicInput input = new ProgramLogicInput("Provide 'c' if you want to contiue using program, " +
+                "provide 's' if you want to stop the program");
+
+            string inputValue = input.GetValue();
+            return inputValue;
+        }
+
+        public void Closing()
+        {
+            Console.WriteLine("Thanks for using Eisenhower App");
         }
     }
 }
