@@ -13,7 +13,7 @@ namespace EisenhowerCore
         {
         }
 
-        protected override bool IsInputValid() => value.ToLower() == "t" || value.ToLower() == "d";
+        protected override bool IsInputValid() => value.ToLower() == "t" || value.ToLower() == "d" || value.ToLower() == "p";
 
     }
 }

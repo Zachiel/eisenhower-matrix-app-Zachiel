@@ -7,17 +7,6 @@ namespace EisenhowerCore
         {
         }
 
-        private string Header()
-        {
-            return " |                URGENT                 |              NOT URGENT              | ";
-
-        }
-
-        private string BreakLine()
-        {
-            return "-|---------------------------------------|--------------------------------------|-";
-
-        }
 
         private List<string> Lines(TodoQuarter urgent, TodoQuarter notUrgent, int lineWidth=37)
         {
@@ -75,17 +64,16 @@ namespace EisenhowerCore
             Console.WriteLine(BreakLine());
         }
 
-        public void TakeInput(TodoMatrix matrix)
+        private string Header()
         {
-            Input input = new Input("Provide task");
-            DateInput dateInput = new DateInput("Provide deadline for you task");
-            BoolInput boolInput = new BoolInput("Is your task important?");
+            return " |                URGENT                 |              NOT URGENT              | ";
 
-            string todo = input.GetValue();
-            DateTime deadline = dateInput.GetConvertedValue();
-            bool importance = boolInput.GetConvertedValue();
+        }
 
-            matrix.CreateItem(todo, deadline, importance);
+        private string BreakLine()
+        {
+            return "-|---------------------------------------|--------------------------------------|-";
+
         }
 
         public void Welcome()
@@ -93,29 +81,14 @@ namespace EisenhowerCore
             Console.WriteLine("Welcome in Eisenhower App");
         }
 
-
-        public string HoldLogic()
-        {
-            LogicInput input = new LogicInput("Provide 't' if you want to add task, " +
-                "provide 'd' if you want to mark your task as done");
-
-            string inputValue = input.GetValue();
-            return inputValue;
-        }
-
-
-        public string RunProgram()
-        {
-            ProgramLogicInput input = new ProgramLogicInput("Provide 'c' if you want to contiue using program, " +
-                "provide 's' if you want to stop the program");
-
-            string inputValue = input.GetValue();
-            return inputValue;
-        }
-
         public void Closing()
         {
             Console.WriteLine("Thanks for using Eisenhower App");
+        }
+
+        public void PrintMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
