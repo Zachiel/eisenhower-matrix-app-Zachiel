@@ -18,7 +18,7 @@ namespace EisenhowerCore
             //matrix._allItems[0].MarkAsDone();
             //matrix._allItems[3].MarkAsDone();
 
-            string run = RunProgram();
+            bool run = true;
             do
             {
                 string letter = HoldLogic();
@@ -34,7 +34,7 @@ namespace EisenhowerCore
 
                 matrix.Display();
                 run = RunProgram();
-            } while (run == "c");
+            } while (run == true);
 
             display.Closing();
             Console.ReadKey();
@@ -66,13 +66,14 @@ namespace EisenhowerCore
             }
 
 
-            string RunProgram()
+            bool RunProgram()
             {
                 ProgramLogicInput input = new ProgramLogicInput("Provide 'c' if you want to contiue using program, " +
                     "provide 's' if you want to stop the program");
 
                 string inputValue = input.GetValue();
-                return inputValue;
+
+                return input.Running();
             }
         }
     }
