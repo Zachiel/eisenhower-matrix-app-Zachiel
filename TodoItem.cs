@@ -74,6 +74,11 @@ namespace EisenhowerCore
 	}
 }
 
+        public string GetName()
+        {
+            return this._name;
+        }
+
         public void MarkAsDone() => _isDone = true;
 
         public void UnmarkAsDone() => _isDone = false;
