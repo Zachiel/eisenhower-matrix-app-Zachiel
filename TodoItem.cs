@@ -62,6 +62,11 @@ namespace EisenhowerCore
             return QuarterTypes.quarters.archivedCards;
         }
 
+        public string GetName()
+        {
+            return this._name;
+        }
+
         public void MarkAsDone() => _isDone = true;
 
         public void UnmarkAsDone() => _isDone = false;

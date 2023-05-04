@@ -29,7 +29,11 @@ namespace EisenhowerCore
                 }
                 else if (letter == "d")
                 {
-                    //TODO logic inside the program with marking tasks
+                    Console.WriteLine(matrix._allItems);
+
+                    NameInput taskName = new NameInput("Provide name of task you want to mark as done", matrix);
+                    //TodoItem updatingItem = ItemFromName(matrix, taskName.GetValue());
+                    //updatingItem.MarkAsDone();
                 }
 
                 matrix.Display();
@@ -75,6 +79,17 @@ namespace EisenhowerCore
 
                 return input.Running();
             }
+
+        //    TodoItem ItemFromName(TodoMatrix matrix, string givenName)
+        //    {
+        //        foreach (TodoItem item in matrix._allItems)
+        //        {
+        //             if (item.GetName() == givenName)
+        //             {
+        //                return item;
+        //             }
+        //        }
+        //    }
         }
     }
 }
