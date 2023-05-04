@@ -22,9 +22,9 @@ namespace EisenhowerCore
         {
             do
             {
-                display.PrintMessage(message); 
+                display.PrintMessage(message);
                 assignValue();
-                if (!IsInputValid()) display.PrintMessage(InvalidInputError); 
+                if (!IsInputValid()) display.PrintMessage(InvalidInputError);
             }
             while (!IsInputValid());
         }
