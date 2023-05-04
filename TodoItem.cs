@@ -73,3 +73,15 @@ namespace EisenhowerCore
 		public void UnmarkAsImportant() => _isImportant = false;
 	}
 }
+
+        public void MarkAsDone() => _isDone = true;
+
+        public void UnmarkAsDone() => _isDone = false;
+
+        public void MarkAsArchived() => _isArchived = true;
+
+        public void MarkAsImportant() => _isImportant = true;
+
+        public void UnmarkAsImportant() => _isImportant = false;
+    }
+}

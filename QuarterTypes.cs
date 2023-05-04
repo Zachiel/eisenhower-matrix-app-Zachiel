@@ -8,7 +8,7 @@ namespace EisenhowerCore
 {
     public class QuarterTypes
     {
-        public enum quarters 
+        public enum quarters
         {
             importantUrgent,
             importantNotUrgent,

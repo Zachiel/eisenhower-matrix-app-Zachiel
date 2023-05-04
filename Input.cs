@@ -8,24 +8,29 @@ namespace EisenhowerCore
 {
     public class Input
     {
+        protected int maxValue;
         protected static string InvalidInputError = "This input is not valid. Try again";
         protected string message;
         protected string value;
         protected string getInputValue() => Console.ReadLine();
         protected void assignValue() => value = getInputValue();
         protected virtual bool IsInputValid() => value != "";
-        public string GetValue() => value; 
+        public string GetValue() => value;
+        Display display = new Display();
+
         protected void ForceValidInput()
         {
-            do {
-                Console.WriteLine(message); //placeholder until display class is not created
+            do
+            {
+                display.PrintMessage(message);
                 assignValue();
-                if (!IsInputValid()) Console.WriteLine(InvalidInputError); //also a placeholder
-               }
+                if (!IsInputValid()) display.PrintMessage(InvalidInputError);
+            }
             while (!IsInputValid());
         }
-        public Input(string message)
+        public Input(string message, int maxValue = 0)
         {
+            this.maxValue = maxValue;
             this.message = message;
             ForceValidInput();
         }
