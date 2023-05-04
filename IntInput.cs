@@ -17,7 +17,7 @@
 			while (!IsInCorrectRange()) ForceValidInput();
 		}
 
-		protected override bool IsInputValid() =>
+		public override bool IsInputValid() =>
 			int.TryParse(Value, out int number) && number <= _maxValue;
 
 		public int GetConvertedValue() => int.Parse(Value);

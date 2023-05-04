@@ -4,7 +4,7 @@
 	{
 		public LogicInput(string message) : base(message) { }
 
-		protected override bool IsInputValid() =>
+		public override bool IsInputValid() =>
 			Value.ToLower() == "t" || Value.ToLower() == "d" || Value.ToLower() == "p";
 	}
 }

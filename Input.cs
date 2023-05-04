@@ -20,7 +20,7 @@
 
 		private void AssignValue() => Value = GetInputValue() ?? string.Empty;
 
-		protected virtual bool IsInputValid() => Value != "";
+		public virtual bool IsInputValid() => Value != "";
 
 		public string GetValue() => Value;
 

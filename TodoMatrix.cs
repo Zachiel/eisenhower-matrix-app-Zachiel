@@ -50,5 +50,17 @@ namespace EisenhowerCore
 		}
 
 		public void Display() => _display.DisplayMatrix(this);
+
+		public static TodoItem ItemFromName(TodoMatrix matrix, string name)
+		{
+			TodoItem foundItem = null!;
+
+			foreach (TodoItem item in matrix.AllItems)
+			{
+				if (name == item.GetName()) foundItem = item;
+			}
+
+			return foundItem;
+		}
 	}
 }

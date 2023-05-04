@@ -7,22 +7,14 @@
 
 		public NameInput(string message, TodoMatrix operatingMatrix) : base(message)
 		{
-			//AddNamesToList(operatingMatrix);
 			_operatingMatrix = operatingMatrix;
-			Console.WriteLine(_names);
+
+			foreach (TodoItem item in _operatingMatrix.GetAllItems()) _names.Add(item.GetName());
+
+			foreach (string name in _names) Console.WriteLine(name);
 		}
 
-		protected override bool IsInputValid() => IsGivenName(_operatingMatrix, Value);
-
-
-		//public bool IsGivenName(string givenName)
-		//{
-		//    if (Names.Contains(givenName))
-		//    {
-		//        return true;
-		//    }
-		//    return false;
-		//}
+		public bool IsInputValid(TodoMatrix matrix, string value) => IsGivenName(matrix, value);
 
 		private bool IsGivenName(TodoMatrix matrix, string givenName)
 		{

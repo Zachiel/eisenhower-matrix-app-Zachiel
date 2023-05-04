@@ -36,8 +36,17 @@ namespace EisenhowerCore
 							"Provide name of task you want to mark as done", newMatrix
 						);
 
-						//TodoItem updatingItem = ItemFromName(matrix, taskName.GetValue());
-						//updatingItem.MarkAsDone();
+						if (taskName.IsInputValid(newMatrix, taskName.GetValue()))
+						{
+							TodoItem updatingItem = TodoMatrix.ItemFromName(
+								newMatrix, taskName.GetValue()
+							);
+
+							updatingItem.MarkAsDone();
+						}
+						else
+							Console.WriteLine($"No item with name {taskName.GetValue()} found.");
+
 						break;
 				}
 
