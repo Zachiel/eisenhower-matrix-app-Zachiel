@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.Metrics;
+using System.Diagnostics.Metrics;
 
 namespace EisenhowerCore
 {
@@ -18,7 +18,7 @@ namespace EisenhowerCore
             //matrix._allItems[0].MarkAsDone();
             //matrix._allItems[3].MarkAsDone();
 
-            bool run = true;
+            string run = RunProgram();
             do
             {
                 string letter = HoldLogic();
@@ -29,16 +29,12 @@ namespace EisenhowerCore
                 }
                 else if (letter == "d")
                 {
-                    Console.WriteLine(matrix._allItems);
-
-                    NameInput taskName = new NameInput("Provide name of task you want to mark as done", matrix);
-                    //TodoItem updatingItem = ItemFromName(matrix, taskName.GetValue());
-                    //updatingItem.MarkAsDone();
+                    //TODO logic inside the program with marking tasks
                 }
 
                 matrix.Display();
                 run = RunProgram();
-            } while (run == true);
+            } while (run == "c");
 
             display.Closing();
             Console.ReadKey();
@@ -70,26 +66,14 @@ namespace EisenhowerCore
             }
 
 
-            bool RunProgram()
+            string RunProgram()
             {
                 ProgramLogicInput input = new ProgramLogicInput("Provide 'c' if you want to contiue using program, " +
                     "provide 's' if you want to stop the program");
 
                 string inputValue = input.GetValue();
-
-                return input.Running();
+                return inputValue;
             }
-
-        //    TodoItem ItemFromName(TodoMatrix matrix, string givenName)
-        //    {
-        //        foreach (TodoItem item in matrix._allItems)
-        //        {
-        //             if (item.GetName() == givenName)
-        //             {
-        //                return item;
-        //             }
-        //        }
-        //    }
         }
     }
 }
