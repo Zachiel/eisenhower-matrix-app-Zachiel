@@ -26,13 +26,13 @@
 					&& i < notUrgentCounter)
 				{
 					lines.Add(
-						$" | {urgentItems[i].ToString().PadRight(lineWidth)} | {notUrgentItems[i].ToString().PadRight(lineWidth)} | "
+						$" | {urgentItems[i].ToString().PadRight(lineWidth)} | {notUrgentItems[i].ToString().PadRight(lineWidth - 1)} | "
 					);
 				}
 				else if (i < notUrgentCounter)
 				{
 					lines.Add(
-						$" |                                       | {notUrgentItems[i].ToString().PadRight(lineWidth)} | "
+						$" | {" ".PadRight(lineWidth)} | {notUrgentItems[i].ToString().PadRight(lineWidth - 1)} | "
 					);
 				}
 				else if (i < urgentCounter)
@@ -42,11 +42,7 @@
 					);
 				}
 				else
-				{
-					lines.Add(
-						" |                                    |                                     | "
-					);
-				}
+					lines.Add($" | {" ".PadRight(lineWidth)} | {" ".PadRight(lineWidth)}| ");
 			}
 
 			return lines;

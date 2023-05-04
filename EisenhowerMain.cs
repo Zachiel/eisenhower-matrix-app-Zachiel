@@ -30,7 +30,14 @@ namespace EisenhowerCore
 
 						break;
 					case "d":
-						//TODO logic inside the program with marking tasks
+						Console.WriteLine(newMatrix.AllItems);
+
+						NameInput taskName = new(
+							"Provide name of task you want to mark as done", newMatrix
+						);
+
+						//TodoItem updatingItem = ItemFromName(matrix, taskName.GetValue());
+						//updatingItem.MarkAsDone();
 						break;
 				}
 
