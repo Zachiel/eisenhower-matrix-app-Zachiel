@@ -16,13 +16,15 @@ namespace EisenhowerCore
         protected void assignValue() => value = getInputValue();
         protected virtual bool IsInputValid() => value != "";
         public string GetValue() => value;
+        Display display = new Display();
+
         protected void ForceValidInput()
         {
             do
             {
-                Console.WriteLine(message); //placeholder until display class is not created
+                display.PrintMessage(message); 
                 assignValue();
-                if (!IsInputValid()) Console.WriteLine(InvalidInputError); //also a placeholder
+                if (!IsInputValid()) display.PrintMessage(InvalidInputError); 
             }
             while (!IsInputValid());
         }

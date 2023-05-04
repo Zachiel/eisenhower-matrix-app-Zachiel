@@ -24,11 +24,18 @@
 			return !verified;
 		}
 
-		// private string ParseToFile(TodoItem item) { }
-		//
+		private string ParseToFile(TodoItem item) => $"{item.name}|{item.date}|{item.isImportant}";
+
 		private string[] ParseFromFile(string line) => line.Split('|');
 
-		public void ExportToFile(string fileName) { }
+		public void ExportToFile(string fileName, TodoMatrix matrix)
+		{
+			string filePath = Directory.GetCurrentDirectory();
+
+			using (StreamWriter outputFile = new(Path.Combine(filePath, $"{fileName}.txt")))
+				foreach (var item in matrix.allItems)
+					outputFile.WriteLine(item);
+		}
 
 		private void ReadFile(string fileName)
 		{

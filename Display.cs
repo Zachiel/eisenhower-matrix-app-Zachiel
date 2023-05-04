@@ -28,31 +28,30 @@ namespace EisenhowerCore
 
 			int urgentCounter = urgentItems.Count();
             int notUrgentCounter = notUrgentItems.Count();
-			int max;
-			if (urgentCounter < 13 && notUrgentCounter < 13) max = 13;
-			else if (urgentCounter > notUrgentCounter) max = urgentCounter - 1;
-			else max = notUrgentCounter - 1;
-
-            for (int i = 0; i<=max; i++)
-			{
-				if (i < urgentCounter && i < notUrgentCounter)
-				{
-					lines.Add($" | {urgentItems[i]}  | {notUrgentItems[i]} | ");
-				}
-				else if (i < notUrgentCounter)
-				{
-                    lines.Add($" |                                    | {notUrgentItems[i]} | ");
+            int max;
+            if (urgentCounter < 13 && notUrgentCounter < 13) max = 13;
+            else if (urgentCounter > notUrgentCounter) max = urgentCounter - 1;
+            else max = notUrgentCounter - 1;
+            for (int i = 0; i <= max; i++)
+            {
+                if (i < urgentCounter && i < notUrgentCounter)
+                {
+                    lines.Add($" | {urgentItems[i].ToString().PadRight(lineWidth)} | {notUrgentItems[i].ToString().PadRight(lineWidth)} | ");
+                }
+                else if (i < notUrgentCounter)
+                {
+                    lines.Add($" |                                       | {notUrgentItems[i].ToString().PadRight(lineWidth)} | ");
                 }
                 else if (i < urgentCounter)
                 {
-                    lines.Add($" | {urgentItems[i]}  |                                     | ");
+                    lines.Add($" | {urgentItems[i].ToString().PadRight(lineWidth)} |                                      | ");
                 }
 				else
 				{
                     lines.Add($" |                                    |                                     | ");
                 }
 
-            }	
+            }
 
             return lines;
 
@@ -77,4 +76,3 @@ namespace EisenhowerCore
         }
     }
 }
-
