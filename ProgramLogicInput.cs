@@ -15,5 +15,14 @@ namespace EisenhowerCore
 
         protected override bool IsInputValid() => value.ToLower() == "c" || value.ToLower() == "s";
 
+        public bool Running()
+        {
+            if (value == "c")
+                return true;
+            else
+            {
+                return false;
+            }
+        }
     }
 }

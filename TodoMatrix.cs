@@ -51,23 +51,5 @@ namespace EisenhowerCore
         {
             display.DisplayMatrix(this);
         }
-
-        //Dictionary<string, TodoQuarter> TodoQuarters = new Dictionary<string, TodoQuarter>()
-        //{
-        //    {"IU", _quarters[0] },
-        //    {"IN", _quarters[1] },
-        //    {"NU", _quarters[2] },
-        //    {"NN", _quarters[3] }
-        //};
-
-        //public List<TodoQuarter> GetQuarters()
-        //{
-        //    return _quarters;
-        //}
-
-        //public TodoQuarter GetQuarter(string status)
-        //{
-        //    return TodoQuarters[status];
-        //}
     }
 }
