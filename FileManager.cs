@@ -24,7 +24,8 @@
 			return !verified;
 		}
 
-		private string ParseToFile(TodoItem item) => $"{item.name}|{item.date}|{item.isImportant}";
+		private string ParseToFile(TodoItem item) =>
+			$"{item.GetName()}|{item.GetDate()}|{item.GetIsImportant()}";
 
 		private string[] ParseFromFile(string line) => line.Split('|');
 
@@ -33,8 +34,9 @@
 			string filePath = Directory.GetCurrentDirectory();
 
 			using (StreamWriter outputFile = new(Path.Combine(filePath, $"{fileName}.txt")))
-				foreach (var item in matrix.allItems)
-					outputFile.WriteLine(item);
+			{
+				foreach (TodoItem item in matrix.GetAllItems()) outputFile.WriteLine(item);
+			}
 		}
 
 		private void ReadFile(string fileName)

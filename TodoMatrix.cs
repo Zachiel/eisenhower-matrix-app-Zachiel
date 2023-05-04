@@ -15,6 +15,8 @@ namespace EisenhowerCore
                 _quarters.Add(new TodoQuarter(quarter, this));
         }
 
+        public List<TodoItem> GetAllItems() => _allItems;
+
         public void updateAllQuarters()
         {
             foreach (TodoQuarter quarter in _quarters) quarter.UpdateAssignedItems();

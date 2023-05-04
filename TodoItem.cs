@@ -21,6 +21,12 @@ namespace EisenhowerCore
 		public int  _id     { get; set; }
 		public bool _isDone { get; set; }
 
+		public bool GetIsImportant() => _isImportant;
+
+		public string GetName() => _name;
+
+		public DateTime GetDate() => _date;
+
 
 		public override string ToString()
 		{
@@ -72,16 +78,4 @@ namespace EisenhowerCore
 
 		public void UnmarkAsImportant() => _isImportant = false;
 	}
-}
-
-        public void MarkAsDone() => _isDone = true;
-
-        public void UnmarkAsDone() => _isDone = false;
-
-        public void MarkAsArchived() => _isArchived = true;
-
-        public void MarkAsImportant() => _isImportant = true;
-
-        public void UnmarkAsImportant() => _isImportant = false;
-    }
 }
