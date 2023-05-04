@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EisenhowerCore
+﻿namespace EisenhowerCore
 {
-    public class Menu
-    {
-        IntInput _input;
+	public class Menu
+	{
+		private IntInput _input;
 
-    }
+		public Menu(IntInput input) => _input = input;
+	}
 }

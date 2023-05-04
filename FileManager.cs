@@ -33,20 +33,16 @@
 		{
 			string filePath = Directory.GetCurrentDirectory();
 
-			using (StreamWriter outputFile = new(Path.Combine(filePath, $"{fileName}.txt")))
-			{
-				foreach (TodoItem item in matrix.GetAllItems()) outputFile.WriteLine(item);
-			}
+			using StreamWriter outputFile = new(Path.Combine(filePath, $"{fileName}.txt"));
+			foreach (TodoItem item in matrix.GetAllItems()) outputFile.WriteLine(item);
 		}
 
 		private void ReadFile(string fileName)
 		{
-			string? line;
-
 			try
 			{
 				StreamReader reader = new(fileName);
-				line = reader.ReadLine();
+				string?      line   = reader.ReadLine();
 
 				while (line != null)
 				{

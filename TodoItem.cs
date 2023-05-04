@@ -10,16 +10,16 @@ namespace EisenhowerCore
 
 		public TodoItem(string name, DateTime date, bool isImportant)
 		{
-			_id          = _counter++;
+			Id           = _counter++;
 			_name        = name;
 			_date        = date;
 			_isImportant = isImportant;
-			_isDone      = false;
+			IsDone       = false;
 			_isArchived  = false;
 		}
 
-		public int  _id     { get; set; }
-		public bool _isDone { get; set; }
+		public int  Id     { get; set; }
+		public bool IsDone { get; private set; }
 
 		public bool GetIsImportant() => _isImportant;
 
@@ -31,7 +31,7 @@ namespace EisenhowerCore
 		public override string ToString()
 		{
 			string stringToReturn = "[";
-			if (_isDone)
+			if (IsDone)
 				stringToReturn += "X";
 			else
 				stringToReturn += " ";
@@ -41,7 +41,7 @@ namespace EisenhowerCore
 			return stringToReturn;
 		}
 
-		public bool IsUrgent()
+		private bool IsUrgent()
 		{
 			DateTime now        = DateTime.Now;
 			double   difference = (now - _date).TotalDays;
@@ -49,28 +49,23 @@ namespace EisenhowerCore
 			return difference >= -3;
 		}
 
-		public QuarterTypes.quarters AssignQuarter()
+		public QuarterTypes.Quarters AssignQuarter()
 		{
-			if (!_isArchived)
-			{
-				if (_isImportant && IsUrgent()) return QuarterTypes.quarters.importantUrgent;
+			if (_isArchived) return QuarterTypes.Quarters.ArchivedCards;
+			if (_isImportant && IsUrgent()) return QuarterTypes.Quarters.ImportantUrgent;
 
-				if (_isImportant || IsUrgent())
-				{
-					if (_isImportant) return QuarterTypes.quarters.importantNotUrgent;
+			if (!_isImportant
+				&& !IsUrgent())
+				return QuarterTypes.Quarters.NotImportantNotUrgent;
 
-					return QuarterTypes.quarters.notImportantUrgent;
-				}
-
-				return QuarterTypes.quarters.notImportantNotUrgent;
-			}
-
-			return QuarterTypes.quarters.archivedCards;
+			return _isImportant
+					   ? QuarterTypes.Quarters.ImportantNotUrgent
+					   : QuarterTypes.Quarters.NotImportantUrgent;
 		}
 
-		public void MarkAsDone() => _isDone = true;
+		public void MarkAsDone() => IsDone = true;
 
-		public void UnmarkAsDone() => _isDone = false;
+		public void UnmarkAsDone() => IsDone = false;
 
 		public void MarkAsArchived() => _isArchived = true;
 

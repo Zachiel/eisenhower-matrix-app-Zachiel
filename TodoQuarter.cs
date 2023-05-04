@@ -2,24 +2,25 @@ namespace EisenhowerCore
 {
 	public class TodoQuarter
 	{
-		private          List<TodoItem>        _assignedItems;
 		private readonly TodoMatrix            _matrix;
-		private readonly QuarterTypes.quarters _type;
+		private readonly QuarterTypes.Quarters _type;
+		private          List<TodoItem>        _assignedItems = null!;
 
-		public TodoQuarter(QuarterTypes.quarters type, TodoMatrix matrix)
+		public TodoQuarter(QuarterTypes.Quarters type, TodoMatrix matrix)
 		{
-			this._type   = type;
-			this._matrix = matrix;
+			_type   = type;
+			_matrix = matrix;
 			UpdateAssignedItems();
-
-        }
+		}
 
 		public List<TodoItem> GetAssignedItems()
 		{
 			List<TodoItem> assigned = new();
-			foreach (TodoItem item in _matrix._allItems)
-				if (item.AssignQuarter() == _type)
-					assigned.Add(item);
+
+			foreach (TodoItem item in _matrix.AllItems)
+			{
+				if (item.AssignQuarter() == _type) assigned.Add(item);
+			}
 
 			return assigned;
 		}

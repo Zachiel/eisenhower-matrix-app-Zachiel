@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EisenhowerCore
+﻿namespace EisenhowerCore
 {
-    public class QuarterTypes
-    {
-        public enum quarters
-        {
-            importantUrgent,
-            importantNotUrgent,
-            notImportantUrgent,
-            notImportantNotUrgent,
-            archivedCards
-        }
-    }
+	public static class QuarterTypes
+	{
+		public enum Quarters
+		{
+			ImportantUrgent,
+			ImportantNotUrgent,
+			NotImportantUrgent,
+			NotImportantNotUrgent,
+			ArchivedCards,
+		}
+	}
 }

@@ -1,55 +1,54 @@
 namespace EisenhowerCore
 {
-    public class TodoMatrix
-    {
-        public readonly List<TodoQuarter> _quarters;
-        public readonly List<TodoItem> _allItems;
-        Display display;
+	public class TodoMatrix
+	{
+		private readonly Display           _display;
+		public readonly  List<TodoItem>    AllItems;
+		public readonly  List<TodoQuarter> Quarters;
 
-        public TodoMatrix()
-        {
-            display = new Display();
-            _allItems = new List<TodoItem>();
-            _quarters = new List<TodoQuarter>();
-            foreach (QuarterTypes.quarters quarter in Enum.GetValues(typeof(QuarterTypes.quarters)))
-                _quarters.Add(new TodoQuarter(quarter, this));
-        }
+		public TodoMatrix()
+		{
+			_display = new Display();
+			AllItems = new List<TodoItem>();
+			Quarters = new List<TodoQuarter>();
+			foreach (QuarterTypes.Quarters quarter in Enum.GetValues(typeof(QuarterTypes.Quarters)))
+				Quarters.Add(new TodoQuarter(quarter, this));
+		}
 
-        public List<TodoItem> GetAllItems() => _allItems;
+		public List<TodoItem> GetAllItems() => AllItems;
 
-        public void updateAllQuarters()
-        {
-            foreach (TodoQuarter quarter in _quarters) quarter.UpdateAssignedItems();
-        }
+		private void UpdateAllQuarters()
+		{
+			foreach (TodoQuarter quarter in Quarters) quarter.UpdateAssignedItems();
+		}
 
-        public void CreateItem(string name, DateTime date, bool isImportant)
-        {
-            TodoItem item = new(name, date, isImportant);
-            _allItems.Add(item);
-            updateAllQuarters();
-        }
+		public void CreateItem(string name, DateTime date, bool isImportant)
+		{
+			TodoItem item = new(name, date, isImportant);
+			AllItems.Add(item);
+			UpdateAllQuarters();
+		}
 
-        public void RemoveItem(int id)
-        {
-            foreach (TodoItem item in _allItems)
-                if (item._id == id)
-                    _allItems.Remove(item);
+		public void RemoveItem(int id)
+		{
+			foreach (TodoItem item in AllItems)
+			{
+				if (item.Id == id) AllItems.Remove(item);
+			}
 
-            updateAllQuarters();
-        }
+			UpdateAllQuarters();
+		}
 
-        public void ArchiveCards()
-        {
-            foreach (TodoItem item in _allItems)
-                if (item._isDone)
-                    item.MarkAsArchived();
+		public void ArchiveCards()
+		{
+			foreach (TodoItem item in AllItems)
+			{
+				if (item.IsDone) item.MarkAsArchived();
+			}
 
-            updateAllQuarters();
-        }
+			UpdateAllQuarters();
+		}
 
-        public void Display()
-        {
-            display.DisplayMatrix(this);
-        }
-    }
+		public void Display() => _display.DisplayMatrix(this);
+	}
 }

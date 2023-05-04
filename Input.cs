@@ -2,34 +2,35 @@
 {
 	public class Input
 	{
-		protected static string  InvalidInputError = "This input is not valid. Try again";
-		private readonly Display display           = new();
-		protected        int     maxValue;
-		protected        string  message;
-		protected        string  value;
+		private const    string  InvalidInputError = "This input is not valid. Try again";
+		private readonly Display _display          = new();
+		private readonly string  _message;
+		protected        int     MaxValue;
+		protected        string  Value;
 
-		public Input(string message, int maxValue = 0)
+		public Input(string message, string value = "", int maxValue = 0)
 		{
-			this.maxValue = maxValue;
-			this.message  = message;
+			MaxValue = maxValue;
+			_message = message;
+			Value    = value;
 			ForceValidInput();
 		}
 
-		protected string getInputValue() => Console.ReadLine();
+		private string? GetInputValue() => Console.ReadLine();
 
-		protected void assignValue() => value = getInputValue();
+		private void AssignValue() => Value = GetInputValue() ?? string.Empty;
 
-		protected virtual bool IsInputValid() => value != "";
+		protected virtual bool IsInputValid() => Value != "";
 
-		public string GetValue() => value;
+		public string GetValue() => Value;
 
 		protected void ForceValidInput()
 		{
 			do
 			{
-				display.PrintMessage(message);
-				assignValue();
-				if (!IsInputValid()) display.PrintMessage(InvalidInputError);
+				_display.PrintMessage(_message);
+				AssignValue();
+				if (!IsInputValid()) _display.PrintMessage(InvalidInputError);
 			}
 			while (!IsInputValid());
 		}

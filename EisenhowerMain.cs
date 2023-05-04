@@ -1,11 +1,11 @@
 namespace EisenhowerCore
 {
-	public class EisenhowerMain
+	public static class EisenhowerMain
 	{
 		public static void Main(string[] args)
 		{
-			Display    display = new();
-			TodoMatrix matrix  = new();
+			Display    display   = new();
+			TodoMatrix newMatrix = new();
 
 			display.Welcome();
 
@@ -16,20 +16,25 @@ namespace EisenhowerCore
 			//matrix._allItems[0].MarkAsDone();
 			//matrix._allItems[3].MarkAsDone();
 
+			// ReSharper disable once RedundantAssignment
 			string run = RunProgram();
 
 			do
 			{
 				string letter = HoldLogic();
 
-				if (letter == "t")
-					MakeItem(matrix);
-				else if (letter == "d")
+				switch (letter)
 				{
-					//TODO logic inside the program with marking tasks
+					case "t":
+						MakeItem(newMatrix);
+
+						break;
+					case "d":
+						//TODO logic inside the program with marking tasks
+						break;
 				}
 
-				matrix.Display();
+				newMatrix.Display();
 				run = RunProgram();
 			}
 			while (run == "c");
@@ -69,7 +74,7 @@ namespace EisenhowerCore
 			string RunProgram()
 			{
 				ProgramLogicInput input = new(
-					"Provide 'c' if you want to contiue using program, "
+					"Provide 'c' if you want to continue using program, "
 					+ "provide 's' if you want to stop the program"
 				);
 

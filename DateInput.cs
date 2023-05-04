@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EisenhowerCore
+﻿namespace EisenhowerCore
 {
-    internal class DateInput : Input
-    {
-        protected override bool IsInputValid()
-        {
-            return DateTime.TryParse(value, out DateTime date);
-        }
-        public DateInput(string message) : base(message)
-        {
-        }
+	internal class DateInput : Input
+	{
+		public DateInput(string message) : base(message) { }
 
-        public DateTime GetConvertedValue() => DateTime.Parse(value);
-    }
+		// ReSharper disable once UnusedVariable
+		protected override bool IsInputValid() => DateTime.TryParse(Value, out DateTime date);
+
+		public DateTime GetConvertedValue() => DateTime.Parse(Value);
+	}
 }

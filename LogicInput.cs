@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EisenhowerCore
+﻿namespace EisenhowerCore
 {
-    internal class LogicInput : Input
-    {
-        public LogicInput(string message) : base(message)
-        {
-        }
+	internal class LogicInput : Input
+	{
+		public LogicInput(string message) : base(message) { }
 
-        protected override bool IsInputValid() => value.ToLower() == "t" || value.ToLower() == "d" || value.ToLower() == "p";
-
-    }
+		protected override bool IsInputValid() =>
+			Value.ToLower() == "t" || Value.ToLower() == "d" || Value.ToLower() == "p";
+	}
 }

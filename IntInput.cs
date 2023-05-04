@@ -1,25 +1,25 @@
 ﻿namespace EisenhowerCore
 {
-	internal class IntInput : Input
+	public class IntInput : Input
 	{
-		private readonly int maxValue;
+		private readonly int _maxValue;
 
 		public IntInput(string message, int maxValue) : base(message)
 		{
-			this.maxValue = maxValue;
+			_maxValue = maxValue;
 			ForceValidRange();
 		}
 
-		protected bool IsInCorrectRange() => int.Parse(value) >= maxValue && int.Parse(value) > 0;
+		private bool IsInCorrectRange() => int.Parse(Value) >= _maxValue && int.Parse(Value) > 0;
 
-		protected void ForceValidRange()
+		private void ForceValidRange()
 		{
 			while (!IsInCorrectRange()) ForceValidInput();
 		}
 
 		protected override bool IsInputValid() =>
-			int.TryParse(value, out int number) && number <= maxValue;
+			int.TryParse(Value, out int number) && number <= _maxValue;
 
-		public int GetConvertedValue() => int.Parse(value);
+		public int GetConvertedValue() => int.Parse(Value);
 	}
 }
